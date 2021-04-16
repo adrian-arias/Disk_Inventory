@@ -1,0 +1,22 @@
+﻿@model List<Borrower>
+@{
+    ViewData["Title"] = "Borrower Page";
+}
+<h2>Borrower Information</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>BorrowerId</th><th>First Name</th><th>Last Name</th><th>Phone Number</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var borrower in Model)
+        {
+            <tr>
+                <td>@borrower.BorrowerId</td>
+                <td>@borrower.Fname</td>
+                <td>@borrower.Lname</td>
+                <td>@borrower.PhoneNum</td>
+            </tr>
+        }
+    </tbody>
+</table>
