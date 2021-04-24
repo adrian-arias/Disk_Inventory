@@ -4,6 +4,8 @@
 }
 <h2>Disc Page</h2>
 
+<a asp-controller="Disc" asp-action="Add">Add a Disc</a>
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr><th>BorrowerId</th><th>Disc Name</th><th>Release Date</th><th>StatusId</th><th>Disc Type id</th><th>GenreId</th></tr>
@@ -11,14 +13,18 @@
     <tbody>
         @foreach (var disc in Model)
         {
-            <tr>
-                <td>@disc.DiscId</td>
-                <td>@disc.DiscName</td>
-                <td>@disc.ReleaseDate</td>
-                <td>@disc.StatusId</td>
-                <td>@disc.DiscTypeId</td>
-                <td>@disc.GenreId</td>
-            </tr>
+        <tr>
+            <td>@disc.DiscId</td>
+            <td>@disc.DiscName</td>
+            <td>@disc.ReleaseDate</td>
+            <td>@disc.StatusId</td>
+            <td>@disc.DiscTypeId</td>
+            <td>@disc.GenreId</td>
+            <td>
+                <a asp-controller="Disc" asp-action="Edit" asp-route-id="@disc.DiscId">Edit</a>
+                <a asp-controller="Disc" asp-action="Delete" asp-route-id="@disc.DiscId">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
