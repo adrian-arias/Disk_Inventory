@@ -61,7 +61,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-color: #C0C0C0;
+  background-color: mediumpurple;
 }
 .footer {
   position: absolute;

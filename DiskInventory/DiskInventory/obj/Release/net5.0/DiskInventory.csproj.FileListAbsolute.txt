@@ -86,3 +86,11 @@ C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\ref\DiskInventory.dll
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\DiskInventory.pdb
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\DiskInventory.genruntimeconfig.cache
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Artist\Delete.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Artist\Edit.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Borrower\Delete.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Borrower\Edit.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Disc\Delete.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\Disc\Edit.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\DiskHasBorrower\Edit.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Release\net5.0\Razor\Views\DiskHasBorrower\Index.cshtml.g.cs

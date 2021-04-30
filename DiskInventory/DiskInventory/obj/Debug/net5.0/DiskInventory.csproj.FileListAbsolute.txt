@@ -92,3 +92,5 @@ C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Debug\net5.0\Razor\Views\Disc\Delete.cshtml.g.cs
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Debug\net5.0\Razor\Views\Borrower\Delete.cshtml.g.cs
 C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Debug\net5.0\Razor\Views\Borrower\Edit.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Debug\net5.0\Razor\Views\DiskHasBorrower\Index.cshtml.g.cs
+C:\Users\aarias\Documents\GitHub\Disk_Inventory\DiskInventory\DiskInventory\obj\Debug\net5.0\Razor\Views\DiskHasBorrower\Edit.cshtml.g.cs

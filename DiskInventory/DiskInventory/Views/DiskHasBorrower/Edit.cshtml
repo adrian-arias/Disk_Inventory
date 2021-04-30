@@ -1,0 +1,58 @@
+﻿@model DiscHasBorrower
+@{
+    string title = ViewBag.Action + "Checkout";
+    ViewBag.title = title;
+}
+<h2>@ViewBag.title</h2>
+
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All"
+         class="text-warning">
+    </div>
+
+    <div>
+        <label asp-for="DiscId">Disc</label>
+        <select asp-for="DiscId" class="form-control">
+            <option value="select a type">select a disc</option>
+            @foreach (Disc d in ViewBag.Discs)
+            {
+                <option value="@d.DiscId">@d.DiscName</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="BorrowerId">Borrower</label>
+        <select asp-for="BorrowerId" class="form-control">
+            <option value="select a type">select a borrower</option>
+            @foreach (Borrower b in ViewBag.Borrowers)
+            {
+                <option value="@b.BorrowerId">@b.Lname, @b.Fname</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="BorrowedDate">Borrowed Date</label>
+        <input asp-for="BorrowedDate" class="form-control">
+    </div>
+
+    <div>
+        <label asp-for="DueDate">Due Date</label>
+        <input asp-for="DueDate" class="form-control">
+    </div>
+
+    <div>
+        <label asp-for="ReturnedDate">Returned Date</label>
+        <input asp-for="ReturnedDate" class="form-control">
+    </div>
+
+    <input type="hidden" asp-for="DiscHasBorrowerId" />
+
+    <button type="submit" class="btn btn-primary">
+        @ViewBag.Action
+    </button>
+    <a asp-controller="DiskHasBorrower" asp-action="Index"
+       class="btn btn-primary">Cancel</a>
+</form>
