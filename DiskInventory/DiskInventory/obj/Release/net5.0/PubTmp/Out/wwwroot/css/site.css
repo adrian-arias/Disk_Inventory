@@ -24,6 +24,8 @@ a {
   border-color: #1861ac;
 }
 
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -59,9 +61,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: mediumpurple;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #EEE0FF;
 }
 .footer {
   position: absolute;

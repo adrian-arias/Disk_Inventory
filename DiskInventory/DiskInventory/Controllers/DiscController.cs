@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiskInventory.Controllers
 {
@@ -16,12 +17,13 @@ namespace DiskInventory.Controllers
         {
             context = ctx;
         }
+        //sort disc by name and status
         public IActionResult Index()
         {
             var discs = context.Discs.OrderBy(d => d.DiscName).ThenBy(s => s.StatusId).ToList();
             return View(discs);
         }
-
+        //add disc
         [HttpGet]
         public IActionResult Add()
         {
@@ -31,7 +33,7 @@ namespace DiskInventory.Controllers
             ViewBag.DiscTypes = context.DiscTypes.OrderBy(dt => dt.Description).ToList();
             return View("Edit", new Disc());
         }
-
+        //edit disc
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -50,13 +52,17 @@ namespace DiskInventory.Controllers
             {
                 if(disc.DiscId == 0)
                 {
-                    context.Discs.Add(disc);
+                    //context.Discs.Add(disc);
+                    context.Database.ExecuteSqlRaw("execute sp_ins_disc @p0, @p1, @p2, @p3, @p4", parameters: new[] { disc.DiscName, disc.ReleaseDate.ToString(),
+                        disc.GenreId.ToString(), disc.StatusId.ToString(), disc.DiscTypeId.ToString() });
                 }
                 else
                 {
-                    context.Discs.Update(disc);
+                    //context.Discs.Update(disc);
+                    context.Database.ExecuteSqlRaw("execute sp_upd_disc @p0, @p1, @p2, @p3, @p4, @p5", parameters: new[] { disc.DiscId.ToString(), disc.DiscName, disc.ReleaseDate.ToString(),
+                        disc.GenreId.ToString(), disc.StatusId.ToString(), disc.DiscTypeId.ToString() });
                 }
-                context.SaveChanges();
+                //context.SaveChanges();
                 return RedirectToAction("Index", "Disc");
             }
             else
@@ -68,6 +74,7 @@ namespace DiskInventory.Controllers
                 return View(disc);
             }
         }
+        //delete disc
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -78,8 +85,9 @@ namespace DiskInventory.Controllers
         [HttpPost]
         public IActionResult Delete(Disc disc)
         {
-            context.Discs.Remove(disc);
-            context.SaveChanges();
+            //context.Discs.Remove(disc);
+            //context.SaveChanges();
+            context.Database.ExecuteSqlRaw("execute sp_del_disc @p0", parameters: new[] { disc.DiscId.ToString() });
             return RedirectToAction("Index", "Disc");
         }
 

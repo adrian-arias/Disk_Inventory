@@ -15,6 +15,7 @@ namespace DiskInventory.Controllers
         {
             context = ctx;
         }
+        //table sorting by name
         public IActionResult Index()
         {
             var diskhasborrowers = context.DiscHasBorrowers.
@@ -22,7 +23,7 @@ namespace DiskInventory.Controllers
             Include(b => b.Borrower).ToList();
             return View(diskhasborrowers);
         }
-
+        //Add borrowers
         [HttpGet]
         public IActionResult Add()
         {
@@ -35,6 +36,7 @@ namespace DiskInventory.Controllers
             return View("Edit", newdiskhasborrower);
             
         }
+        //Edit borrowers
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -45,6 +47,7 @@ namespace DiskInventory.Controllers
             return View(diskhasborrower);
             
         }
+        
         [HttpPost]
         public IActionResult Edit(DiscHasBorrower discHasBorrower)
         {

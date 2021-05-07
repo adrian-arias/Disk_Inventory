@@ -8,15 +8,15 @@
 
 <table class="table table-bordered table-striped">
     <thead>
-        <tr><th>BorrowerId</th><th>Disc Name</th><th>Release Date</th><th>StatusId</th><th>Disc Type id</th><th>GenreId</th></tr>
+        <tr><th>Disc Name</th><th>Release Date</th><th>StatusId</th><th>Disc Type id</th><th>GenreId</th></tr>
     </thead>
     <tbody>
         @foreach (var disc in Model)
         {
         <tr>
-            <td>@disc.DiscId</td>
+            @*<td>@disc.DiscId</td>*@
             <td>@disc.DiscName</td>
-            <td>@disc.ReleaseDate</td>
+            <td>@disc.ReleaseDate.ToShortDateString()</td>
             <td>@disc.StatusId</td>
             <td>@disc.DiscTypeId</td>
             <td>@disc.GenreId</td>

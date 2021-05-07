@@ -16,11 +16,13 @@ namespace DiskInventory.Controllers
         {
             context = ctx;
         }
+        //sort artist by first and last name
         public IActionResult Index()
         {
             var artists = context.Artists.OrderBy(a => a.Lname).ThenBy(a => a.Fname).ToList();
             return View(artists);
         }
+        //add artist
         [HttpGet]
         public IActionResult Add()
         {
@@ -28,6 +30,7 @@ namespace DiskInventory.Controllers
             ViewBag.ArtistTypes = context.ArtistTypes.OrderBy(t => t.Description).ToList();
             return View("Edit", new Artist());
         }
+        //edit artist
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -43,13 +46,17 @@ namespace DiskInventory.Controllers
             {
                 if(theartist.ArtistId == 0)
                 {
-                    context.Artists.Add(theartist);
+                    //context.Artists.Add(theartist);
+                    context.Database.ExecuteSqlRaw("execute sp_ins_artist @p0, @p1, @p2", parameters: new[] {theartist.Fname, theartist.Lname, theartist.ArtistTypeId.ToString() });
                 }
                 else
                 {
-                    context.Artists.Update(theartist);
+                    //CREATE PROC sp_upd_artist @artist_id int, @fname nvarchar(60), @lname nvarchar(60), @artist_type_id int
+                    //context.Artists.Update(theartist);
+                    context.Database.ExecuteSqlRaw("execute sp_upd_artist @p0, @p1, @p2, @p3", parameters: new[] {theartist.ArtistId.ToString(), theartist.Fname,
+                        theartist.Lname, theartist.ArtistTypeId.ToString() });
                 }
-                context.SaveChanges();
+                //context.SaveChanges();
                 return RedirectToAction("Index", "Artist");
             }
             else
@@ -59,6 +66,7 @@ namespace DiskInventory.Controllers
                 return View(theartist);
             }
         }
+        //delete artist
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -68,8 +76,10 @@ namespace DiskInventory.Controllers
         [HttpPost]
         public IActionResult Delete(Artist artist)
         {
-            context.Artists.Remove(artist);
-            context.SaveChanges();
+            //CREATE PROC sp_del_artist @artist_id int
+            //context.Artists.Remove(artist);
+            //context.SaveChanges();
+            context.Database.ExecuteSqlRaw("execute sp_del_artist @p0", parameters: new[] {artist.ArtistId.ToString()  });
             return RedirectToAction("Index", "Artist");
         }
     }

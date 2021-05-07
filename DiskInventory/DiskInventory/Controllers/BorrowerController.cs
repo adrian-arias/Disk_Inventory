@@ -16,17 +16,20 @@ namespace DiskInventory.Controllers
         {
             context = ctx;
         }
+        //table sorting by name
         public IActionResult Index()
         {
             var borrowers = context.Borrowers.OrderBy(b => b.Lname).ToList();
             return View(borrowers);
         }
+        //add borrowers
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
             return View("Edit", new Borrower());
         }
+        //edit borrowers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
@@ -39,10 +42,13 @@ namespace DiskInventory.Controllers
             if (ModelState.IsValid)
             {
                 if (borrower.BorrowerId == 0)
-                    context.Borrowers.Add(borrower);
+                    //context.Borrowers.Add(borrower);
+                context.Database.ExecuteSqlRaw("execute sp_ins_borrower @p0, @p1, @p2", parameters: new[] {borrower.Fname, borrower.Lname, borrower.PhoneNum.ToString() });
                 else
-                    context.Borrowers.Update(borrower);
-                context.SaveChanges();
+                    //context.Borrowers.Update(borrower);
+                context.Database.ExecuteSqlRaw("execute sp_upd_borrower @p0, @p1, @p2, @p3", parameters: new[] { borrower.BorrowerId.ToString(), borrower.Fname,
+                    borrower.Lname, borrower.PhoneNum.ToString() });
+                //context.SaveChanges();
                 return RedirectToAction("Index", "Borrower");
             }
             else
@@ -51,6 +57,7 @@ namespace DiskInventory.Controllers
                 return View(borrower);
             }
         }
+        //delete borrowers
         [HttpGet]
         public IActionResult Delete (int id)
         {
@@ -60,8 +67,9 @@ namespace DiskInventory.Controllers
         [HttpPost]
         public IActionResult Delete (Borrower borrower)
         {
-            context.Borrowers.Remove(borrower);
-            context.SaveChanges();
+            //context.Borrowers.Remove(borrower);
+            //context.SaveChanges();
+            context.Database.ExecuteSqlRaw("execute sp_del_borrower @p0", parameters: new[] { borrower.BorrowerId.ToString() });
             return RedirectToAction("Index", "Borrower");
         }
     }

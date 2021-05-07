@@ -6,13 +6,13 @@
 <a asp-controller="Artist" asp-action="Add">Add Artist</a>
 <table class="table table-bordered table-striped">
     <thead>
-        <tr><th>ArtistId</th><th>First Name</th><th>Last Name</th><th>Artist Type</th><th></th></tr>
+        <tr>@*<th>ArtistId</th>*@<th>First Name</th><th>Last Name</th><th>Artist Type</th><th></th></tr>
     </thead>
     <tbody>
         @foreach (var artist in Model)
         {
         <tr>
-            <td>@artist.ArtistId</td>
+            @*<td>@artist.ArtistId</td>*@
             <td>@artist.Fname</td>
             <td>@artist.Lname</td>
             <td>@artist.ArtistTypeId</td>
